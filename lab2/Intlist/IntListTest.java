@@ -4,6 +4,15 @@ import org.junit.Test;
 
 public class IntListTest {
 
+//    @Test
+//    public void test(){
+//        IntList a = new IntList(20,null);
+//        IntList a2 = new IntList(25,a);
+//        IntList a3 = new IntList(30,a2);
+//        IntList.dSquareList(a3);
+//        System.out.println(a3.rest.first);
+//    }
+
     /**
      * Example test that verifies correctness of the IntList.of static
      * method. The main point of this is to convince you that
