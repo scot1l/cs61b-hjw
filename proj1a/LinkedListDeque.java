@@ -24,7 +24,7 @@ public class LinkedListDeque<T> {
 		size = 0;
 	}
 
-	public LinkedListDeque(LinkedListDeque<T> other){
+	public LinkedListDeque(LinkedListDeque other){
 		sentinel = new DequeNode<T>(null);
 		sentinel.next = sentinel;
 		sentinel.prev = sentinel;
@@ -84,6 +84,7 @@ public class LinkedListDeque<T> {
 	}
 
 	public T removeFirst(){
+		if(isEmpty()) return null;
 		size--;
 		T temp = sentinel.next.item;
 		sentinel.next.next.prev = sentinel;
@@ -91,6 +92,7 @@ public class LinkedListDeque<T> {
 		return temp;
 	}
 	public T removeLast(){
+		if(isEmpty()) return null;
 		size--;
 		T temp = sentinel.prev.item;
 		sentinel.prev.prev.next = sentinel;
@@ -106,16 +108,4 @@ public class LinkedListDeque<T> {
 		return temp.item;
 	}
 
-
-
-	public static void main(String[] args) {
-		LinkedListDeque<String> huangDeque = new LinkedListDeque<>();
-		huangDeque.addFirst("haha");
-		huangDeque.addLast("jiji");
-		huangDeque.addFirst("lala");
-		huangDeque.addLast("lastone");
-		System.out.println(huangDeque.getRecursive(4));
-		LinkedListDeque<String> jianDeque = new LinkedListDeque<>(huangDeque);
-		jianDeque.printDeque();
-	}
 }
