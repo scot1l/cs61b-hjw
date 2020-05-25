@@ -10,7 +10,7 @@ public class PercolationStats {
 		if(N<=0 || T <=0) {
 			throw new IllegalArgumentException("illegal argument");
 		}
-		fractions = new double[N*N];
+		fractions = new double[T];
 		numOfStats = T;
 		int totalSites = N*N;
 		for (int i = 0; i < T; i++) {
@@ -24,7 +24,7 @@ public class PercolationStats {
 					numOfOpenSites ++;
 				}
 			}
-			fractions[i] = (double)numOfOpenSites / totalSites;
+			fractions[i] = (double) numOfOpenSites / totalSites;
 		}
 	}
 

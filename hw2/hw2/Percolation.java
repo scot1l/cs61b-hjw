@@ -7,7 +7,7 @@ public class Percolation {
 	private WeightedQuickUnionUF uf;
 	private WeightedQuickUnionUF ufExcludeBottom;
 	private int size;
-	private int[] openOrNot;
+	private boolean[] openOrNot;
 	private int virtualTop;
 	private int virtualBottom;
 	private int openSites;
@@ -19,7 +19,7 @@ public class Percolation {
 		uf = new WeightedQuickUnionUF(N * N+2);
 		ufExcludeBottom = new WeightedQuickUnionUF(N*N+1);
 		size = N;
-		openOrNot = new int[N*N];
+		openOrNot = new boolean[N*N];
 		virtualTop = N*N;
 		virtualBottom = N*N +1 ;
 		openSites = 0;
@@ -40,7 +40,7 @@ public class Percolation {
 		if (isOpen(row, col)) return;
 
 		int index = xyTo1D(row,col);
-		openOrNot[index] = 1;
+		openOrNot[index] = true;
 
 		if (row == 0) {
 			uf.union(index,virtualTop);
@@ -72,7 +72,7 @@ public class Percolation {
 
 	public boolean isOpen(int row, int col) {
 		validate(row, col);
-		return openOrNot[xyTo1D(row,col)] == 1;
+		return openOrNot[xyTo1D(row,col)];
 	}
 
 	public boolean isFull(int row, int col) {
