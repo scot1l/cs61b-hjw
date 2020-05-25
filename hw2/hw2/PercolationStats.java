@@ -19,8 +19,10 @@ public class PercolationStats {
 			while (!percolation.percolates()) {
 				int raw = StdRandom.uniform(N);
 				int col = StdRandom.uniform(N);
-				percolation.open(raw, col);
-				numOfOpenSites ++;
+				if(!percolation.isOpen(raw,col)){
+					percolation.open(raw,col);
+					numOfOpenSites ++;
+				}
 			}
 			fractions[i] = (double)numOfOpenSites / totalSites;
 		}
