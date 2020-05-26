@@ -1,5 +1,6 @@
 package hw3.hash;
 
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,30 +21,55 @@ public class TestComplexOomage {
     /* This should pass if your OomageTestUtility.haveNiceHashCodeSpread
        is correct. This is true even though our given ComplexOomage class
        has a flawed hashCode. */
-    /*@Test
+    @Test
     public void testRandomOomagesHashCodeSpread() {
         List<Oomage> oomages = new ArrayList<>();
-        int N = 10000;
+        int N = 1000;
 
         for (int i = 0; i < N; i += 1) {
             oomages.add(ComplexOomage.randomComplexOomage());
         }
 
+
         assertTrue(OomageTestUtility.haveNiceHashCodeSpread(oomages, 10));
-    }*/
+    }
 
     /* TODO: Create a list of Complex Oomages called deadlyList
      * that shows the flaw in the hashCode function.
      */
-    /*
     @Test
     public void testWithDeadlyParams() {
         List<Oomage> deadlyList = new ArrayList<>();
+        int N = 10000;
+//        for (int i = 0; i < N; i++) {
+//            deadlyList.add(ComplexOomage.randomComplexOomage());
+//        }
 
+//        for (int i = 0; i < N; i += 1) {
+//            List<Integer> params = new ArrayList<>();
+//            for (int j = 0; j < 5; j++) {
+//                params.add(StdRandom.uniform(255));
+//            }
+//            ComplexOomage c = new ComplexOomage(params);
+//            deadlyList.add(c);
+//        }
         // Your code here.
+        for (int i = 0; i < 10; i += 1) {
+            ArrayList<Integer> params = new ArrayList<>();
+            params.add(i);
+            // According to hashCode() in ComplexOomage.java and Hint.java,
+            // if the hashCode exceeds 256e3, it will overflow to 0.
+            // Use add(i) rather than add(some_constant) will let built-in
+            // hashCode() to pass.
+            for (int j = 0; j < 4; j += 1) {
+                params.add(1);
+            }
+            ComplexOomage com = new ComplexOomage(params);
+            deadlyList.add(com);
+        }
 
         assertTrue(OomageTestUtility.haveNiceHashCodeSpread(deadlyList, 10));
-    } */
+    }
 
     /** Calls tests for SimpleOomage. */
     public static void main(String[] args) {

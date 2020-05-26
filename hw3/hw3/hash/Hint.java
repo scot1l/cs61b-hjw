@@ -8,5 +8,7 @@ public class Hint {
             System.out.println(i + "th power: " + x);
             x = x * 256;
         }
+        int aa = 1<<30;
+        System.out.println(aa<<1);
     }
 } 
